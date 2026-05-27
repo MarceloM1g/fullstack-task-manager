@@ -33,10 +33,11 @@ function Login() {
             });
 
             if (!response.ok) {
+                alert('Usuário ou Senha incorreto');
                 throw new Error("Erro ao logar Usuário");
             } else {
                 alert('Usuário logado com sucesso!');
-            } 
+            }
 
             const data = await response.json();
             localStorage.setItem('token', data.token);

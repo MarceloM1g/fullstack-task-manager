@@ -3,6 +3,8 @@ const cors = require("cors");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config();
+
 const { PrismaClient } = require('./generated/prisma')
 
 const prisma = new PrismaClient();
@@ -34,7 +36,7 @@ function authMiddleware(req, res, next) {
         // Verificar o Token
         const decoded = jwt.verify(
             token,
-            "segredo-super-secreto"
+            process.env.JWT_SECRET
         );
 
         // Salvar infos do usuário na request
@@ -160,7 +162,7 @@ app.post('/login', async (req, res) => {
     // Se não encontrar
     if (!user) {
         return res.status(404).json({
-            message: "Usuário não encontrado"
+            message: "Email ou senha inválidos"
         });
     }
 
@@ -180,7 +182,7 @@ app.post('/login', async (req, res) => {
     // Se tudo acima estiver correto - Gerando o Token do Usuário
     const token = jwt.sign(
         { id: user.id },
-        "segredo-super-secreto",
+        process.env.JWT_SECRET,
         { expiresIn: '1d' }
     );
 
