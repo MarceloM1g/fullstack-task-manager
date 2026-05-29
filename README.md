@@ -34,7 +34,7 @@ Sistema fullstack de gerenciamento de tarefas desenvolvido com React, Node.js, E
 
 ---
 
-# 📸 Preview
+# Preview
 
 Em breve...
 
