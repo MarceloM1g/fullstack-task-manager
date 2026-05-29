@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import TaskManager from './pages/TaskManager';
 import Profile from './pages/Profile';
 import { Route, Routes } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -15,8 +16,18 @@ function App() {
         <Route path='/' element={<Register />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/sistema" element={<TaskManager />} />
-        <Route path='/profile' element={<Profile />} />
+
+        <Route path="/sistema" element={
+          <ProtectedRoute>
+            <TaskManager />
+          </ProtectedRoute>
+        } />
+
+        <Route path='/profile' element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
       </Routes>
     </>
   )
