@@ -18,7 +18,7 @@ export default function ProtectedRoute({ children }: Props) {
 
         async function validateToken() {
             try {
-                const response = await fetch('http://localhost:3000/user', {
+                const response = await fetch('https://fullstack-task-manager-x8w5.onrender.com/user', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

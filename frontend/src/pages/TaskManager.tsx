@@ -32,11 +32,11 @@ function TaskManager() {
 
         const [tasksResponse, userResponse] = await Promise.all([
 
-          fetch('http://localhost:3000/tasks', {
+          fetch('https://fullstack-task-manager-x8w5.onrender.com/tasks', {
             headers: { Authorization: `Bearer ${token}` }
           }),
 
-          fetch('http://localhost:3000/user', {
+          fetch('https://fullstack-task-manager-x8w5.onrender.com/user', {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
@@ -97,7 +97,7 @@ function TaskManager() {
         return;
       }
 
-      const response = await fetch('http://localhost:3000/tasks', {
+      const response = await fetch('https://fullstack-task-manager-x8w5.onrender.com/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ function TaskManager() {
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const response = await fetch(`https://fullstack-task-manager-x8w5.onrender.com/tasks/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`
@@ -173,7 +173,7 @@ function TaskManager() {
         return;
       }
 
-      const response = await fetch(`http://localhost:3000/tasks/${idToEdit}`, {
+      const response = await fetch(`https://fullstack-task-manager-x8w5.onrender.com/tasks/${idToEdit}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -342,7 +342,7 @@ function TaskManager() {
         </ul>
       </div>
 
-      {/* Se "idToEdit" for diferente de null, a condição é verdadeira e o modal é exibidoz */}
+      {/* Se "idToEdit" for diferente de null, a condição é verdadeira e o modal é exibido */}
       {idToEdit !== null && (
         /* Quando o usuário clicar fora do input, a variavel "idToEdit" vai receber o valor "null". 
           Assim fazendo não satisfazendo a condição acima e sumindo o modal */
